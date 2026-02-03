@@ -44,6 +44,7 @@ export default function Settings() {
   const [selectedIcon, setSelectedIcon] = useState('ellipsis-horizontal');
   const [selectedColor, setSelectedColor] = useState('#B2BEC3');
   const [categoryType, setCategoryType] = useState<'income' | 'expense'>('expense');
+  const [isLoading, setIsLoading] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
