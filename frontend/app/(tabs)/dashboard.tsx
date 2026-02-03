@@ -5,10 +5,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { PieChart } from 'react-native-gifted-charts';
 import { getTransactions, getCategories, Transaction, Category } from '../../utils/storage';
 import { format, startOfMonth, endOfMonth } from 'date-fns';
+import { useThemeStore } from '../../utils/themeStore';
 
 const { width } = Dimensions.get('window');
 
 export default function Dashboard() {
+  const theme = useThemeStore((state) => state.theme);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [totalIncome, setTotalIncome] = useState(0);
