@@ -9,11 +9,13 @@ import {
   Platform,
   KeyboardAvoidingView,
   Alert,
+  Switch,
 } from 'react-native';
 import { useState, useEffect, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { getCategories, saveCategory, Category } from '../../utils/storage';
+import { useThemeStore } from '../../utils/themeStore';
 
 const AVAILABLE_ICONS = [
   'fast-food', 'car', 'cart', 'receipt', 'game-controller', 'medical',
