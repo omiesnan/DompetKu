@@ -30,6 +30,10 @@ const AVAILABLE_COLORS = [
 ];
 
 export default function Settings() {
+  const theme = useThemeStore((state) => state.theme);
+  const themeMode = useThemeStore((state) => state.mode);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  
   const [categories, setCategories] = useState<Category[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [categoryName, setCategoryName] = useState('');
