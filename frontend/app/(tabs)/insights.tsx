@@ -12,9 +12,10 @@ import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { getTransactions, getCategories } from '../../utils/storage';
 import { startOfMonth, endOfMonth } from 'date-fns';
-import Constants from 'expo-constants';
+import { useThemeStore } from '../../utils/themeStore';
 
 export default function Insights() {
+  const theme = useThemeStore((state) => state.theme);
   const [analysis, setAnalysis] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
