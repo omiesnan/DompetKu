@@ -191,10 +191,8 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
   },
   header: {
-    backgroundColor: '#4CAF50',
     padding: 24,
     paddingTop: 60,
     paddingBottom: 32,
