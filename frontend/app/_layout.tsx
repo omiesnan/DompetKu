@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
+import { useThemeStore } from '../utils/themeStore';
 
 // Configure notifications
 Notifications.setNotificationHandler({
@@ -13,7 +14,12 @@ Notifications.setNotificationHandler({
 });
 
 export default function RootLayout() {
+  const loadTheme = useThemeStore((state) => state.loadTheme);
+
   useEffect(() => {
+    // Load theme preference
+    loadTheme();
+    
     // Request notification permissions
     const requestPermissions = async () => {
       if (Platform.OS === 'android') {
