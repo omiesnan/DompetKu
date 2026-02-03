@@ -321,10 +321,8 @@ export default function Settings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
   },
   header: {
-    backgroundColor: '#4CAF50',
     padding: 24,
     paddingTop: 60,
     paddingBottom: 24,
@@ -332,7 +330,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#FFFFFF',
   },
   content: {
     flex: 1,
@@ -349,8 +346,39 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#212121',
     flex: 1,
+  },
+  themeCard: {
+    borderRadius: 16,
+    padding: 20,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  themeOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  themeIconContainer: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
+  },
+  themeInfo: {
+    flex: 1,
+  },
+  themeTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  themeSubtitle: {
+    fontSize: 14,
   },
   addCategoryButton: {
     flexDirection: 'row',
@@ -367,7 +395,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   infoCard: {
-    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 20,
     elevation: 2,
@@ -379,17 +406,14 @@ const styles = StyleSheet.create({
   appName: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#4CAF50',
     marginBottom: 4,
   },
   appVersion: {
     fontSize: 14,
-    color: '#757575',
     marginBottom: 12,
   },
   appDescription: {
     fontSize: 15,
-    color: '#424242',
     lineHeight: 22,
   },
   categoryGroup: {
