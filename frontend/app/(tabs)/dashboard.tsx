@@ -78,8 +78,8 @@ export default function Dashboard() {
   const balance = totalIncome - totalExpense;
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+      <View style={[styles.header, { backgroundColor: theme.primary }]}>
         <Text style={styles.headerTitle}>Dashboard Keuangan</Text>
         <Text style={styles.headerSubtitle}>{format(new Date(), 'MMMM yyyy')}</Text>
       </View>
