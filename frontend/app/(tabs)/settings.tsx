@@ -89,6 +89,99 @@ export default function Settings() {
     }
   };
 
+  // Export handlers
+  const handleExportCSV = async () => {
+    try {
+      setIsLoading(true);
+      const transactions = await getTransactions();
+      const result = await exportToCSV(transactions);
+      Alert.alert(result.success ? 'Berhasil' : 'Gagal', result.message);
+    } catch (error) {
+      Alert.alert('Error', 'Gagal mengekspor data');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleExportReport = async () => {
+    try {
+      setIsLoading(true);
+      const transactions = await getTransactions();
+      const now = new Date();
+      const monthStart = startOfMonth(now);
+      const monthEnd = endOfMonth(now);
+
+      const monthTxns = transactions.filter(t => {
+        const txnDate = new Date(t.date);
+        return txnDate >= monthStart && txnDate <= monthEnd;
+      });
+
+      const totalIncome = monthTxns.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
+      const totalExpense = monthTxns.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
+      
+      const categoryBreakdown: { [key: string]: number } = {};
+      monthTxns.filter(t => t.type === 'expense').forEach(t => {
+        categoryBreakdown[t.category] = (categoryBreakdown[t.category] || 0) + t.amount;
+      });
+
+      const result = await exportMonthlyReport({
+        month: format(now, 'MMMM yyyy'),
+        totalIncome,
+        totalExpense,
+        balance: totalIncome - totalExpense,
+        categoryBreakdown,
+        transactions: monthTxns,
+      });
+
+      Alert.alert(result.success ? 'Berhasil' : 'Gagal', result.message);
+    } catch (error) {
+      Alert.alert('Error', 'Gagal membuat laporan');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleBackup = async () => {
+    try {
+      setIsLoading(true);
+      const data = await getAllDataForBackup();
+      const result = await exportBackup(data);
+      Alert.alert(result.success ? 'Berhasil' : 'Gagal', result.message);
+    } catch (error) {
+      Alert.alert('Error', 'Gagal membuat backup');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleRestore = async () => {
+    Alert.alert(
+      'Restore Backup',
+      'Semua data saat ini akan diganti dengan data dari backup. Lanjutkan?',
+      [
+        { text: 'Batal', style: 'cancel' },
+        {
+          text: 'Restore',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              setIsLoading(true);
+              const result = await restoreFromBackup();
+              Alert.alert(result.success ? 'Berhasil' : 'Gagal', result.message);
+              if (result.success) {
+                await loadData();
+              }
+            } catch (error) {
+              Alert.alert('Error', 'Gagal restore backup');
+            } finally {
+              setIsLoading(false);
+            }
+          },
+        },
+      ]
+    );
+  };
+
   const customCategories = categories.filter(c => c.isCustom);
   const defaultCategories = categories.filter(c => !c.isCustom);
 
