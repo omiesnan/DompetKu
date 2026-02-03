@@ -236,11 +236,105 @@ export default function Settings() {
           </View>
         </View>
 
+        {/* Export Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Ionicons name="download" size={24} color={theme.primary} />
+            <Text style={[styles.sectionTitle, { color: theme.text }]}>Ekspor Data</Text>
+          </View>
+          <View style={[styles.actionCard, { backgroundColor: theme.surface }]}>
+            <TouchableOpacity
+              style={[styles.actionButton, { borderColor: theme.border }]}
+              onPress={handleExportCSV}
+              disabled={isLoading}
+            >
+              <Ionicons name="document-text" size={24} color={theme.primary} />
+              <View style={styles.actionInfo}>
+                <Text style={[styles.actionTitle, { color: theme.text }]}>Ekspor ke CSV</Text>
+                <Text style={[styles.actionSubtitle, { color: theme.textSecondary }]}>
+                  Semua transaksi dalam format Excel
+                </Text>
+              </View>
+              {isLoading ? (
+                <ActivityIndicator size="small" color={theme.primary} />
+              ) : (
+                <Ionicons name="chevron-forward" size={20} color={theme.textSecondary} />
+              )}
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={[styles.actionButton, { borderColor: theme.border }]}
+              onPress={handleExportReport}
+              disabled={isLoading}
+            >
+              <Ionicons name="document" size={24} color={theme.primary} />
+              <View style={styles.actionInfo}>
+                <Text style={[styles.actionTitle, { color: theme.text }]}>Laporan Bulanan</Text>
+                <Text style={[styles.actionSubtitle, { color: theme.textSecondary }]}>
+                  Ringkasan bulan ini dalam format teks
+                </Text>
+              </View>
+              {isLoading ? (
+                <ActivityIndicator size="small" color={theme.primary} />
+              ) : (
+                <Ionicons name="chevron-forward" size={20} color={theme.textSecondary} />
+              )}
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Backup & Restore Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Ionicons name="cloud" size={24} color={theme.primary} />
+            <Text style={[styles.sectionTitle, { color: theme.text }]}>Backup & Restore</Text>
+          </View>
+          <View style={[styles.actionCard, { backgroundColor: theme.surface }]}>
+            <TouchableOpacity
+              style={[styles.actionButton, { borderColor: theme.border }]}
+              onPress={handleBackup}
+              disabled={isLoading}
+            >
+              <Ionicons name="cloud-upload" size={24} color={theme.success} />
+              <View style={styles.actionInfo}>
+                <Text style={[styles.actionTitle, { color: theme.text }]}>Buat Backup</Text>
+                <Text style={[styles.actionSubtitle, { color: theme.textSecondary }]}>
+                  Backup semua data ke file JSON
+                </Text>
+              </View>
+              {isLoading ? (
+                <ActivityIndicator size="small" color={theme.primary} />
+              ) : (
+                <Ionicons name="chevron-forward" size={20} color={theme.textSecondary} />
+              )}
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={[styles.actionButton, { borderColor: theme.border }]}
+              onPress={handleRestore}
+              disabled={isLoading}
+            >
+              <Ionicons name="cloud-download" size={24} color={theme.warning} />
+              <View style={styles.actionInfo}>
+                <Text style={[styles.actionTitle, { color: theme.text }]}>Restore Backup</Text>
+                <Text style={[styles.actionSubtitle, { color: theme.textSecondary }]}>
+                  Pulihkan data dari file backup
+                </Text>
+              </View>
+              {isLoading ? (
+                <ActivityIndicator size="small" color={theme.primary} />
+              ) : (
+                <Ionicons name="chevron-forward" size={20} color={theme.textSecondary} />
+              )}
+            </TouchableOpacity>
+          </View>
+        </View>
+
         {/* Categories Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Ionicons name="albums" size={24} color="#4CAF50" />
-            <Text style={styles.sectionTitle}>Kategori</Text>
+            <Ionicons name="albums" size={24} color={theme.primary} />
+            <Text style={[styles.sectionTitle, { color: theme.text }]}>Kategori</Text>
             <TouchableOpacity style={styles.addCategoryButton} onPress={handleAddCategory}>
               <Ionicons name="add" size={20} color="#FFFFFF" />
               <Text style={styles.addCategoryText}>Tambah</Text>
