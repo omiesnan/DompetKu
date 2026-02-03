@@ -15,22 +15,26 @@ export default function TabLayout() {
           backgroundColor: theme.tabBar,
           borderTopWidth: 1,
           borderTopColor: theme.tabBarBorder,
-          paddingBottom: 8,
-          paddingTop: 8,
-          height: 60,
+          paddingBottom: 6,
+          paddingTop: 6,
+          height: 65,
         },
         tabBarLabelStyle: {
-          fontSize: 11,
+          fontSize: 10,
           fontWeight: '600',
+          marginTop: -2,
+        },
+        tabBarIconStyle: {
+          marginTop: 2,
         },
       }}
     >
       <Tabs.Screen
         name="dashboard"
         options={{
-          title: 'Dashboard',
+          title: 'Home',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
+            <Ionicons name="home" size={22} color={color} />
           ),
         }}
       />
@@ -39,16 +43,16 @@ export default function TabLayout() {
         options={{
           title: 'Transaksi',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="list" size={size} color={color} />
+            <Ionicons name="list" size={22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="budget"
         options={{
-          title: 'Anggaran',
+          title: 'Budget',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="wallet" size={size} color={color} />
+            <Ionicons name="wallet" size={22} color={color} />
           ),
         }}
       />
@@ -57,25 +61,25 @@ export default function TabLayout() {
         options={{
           title: 'Laporan',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="bar-chart" size={size} color={color} />
+            <Ionicons name="bar-chart" size={22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="insights"
         options={{
-          title: 'AI Insight',
+          title: 'AI Tips',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="bulb" size={size} color={color} />
+            <Ionicons name="bulb" size={22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: 'Lainnya',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
+            <Ionicons name="settings" size={22} color={color} />
           ),
         }}
       />
