@@ -88,22 +88,51 @@ export default function Settings() {
   const defaultCategories = categories.filter(c => !c.isCustom);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Pengaturan</Text>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <View style={[styles.header, { backgroundColor: theme.primary }]}>
+        <Text style={[styles.headerTitle, { color: '#FFFFFF' }]}>Pengaturan</Text>
       </View>
 
       <ScrollView style={styles.content}>
+        {/* Theme Toggle Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Ionicons name="color-palette" size={24} color={theme.primary} />
+            <Text style={[styles.sectionTitle, { color: theme.text }]}>Tema Aplikasi</Text>
+          </View>
+          <View style={[styles.themeCard, { backgroundColor: theme.surface }]}>
+            <View style={styles.themeOption}>
+              <View style={styles.themeIconContainer}>
+                <Ionicons name={themeMode === 'light' ? 'sunny' : 'moon'} size={28} color={theme.primary} />
+              </View>
+              <View style={styles.themeInfo}>
+                <Text style={[styles.themeTitle, { color: theme.text }]}>
+                  {themeMode === 'light' ? 'Mode Terang' : 'Mode Gelap'}
+                </Text>
+                <Text style={[styles.themeSubtitle, { color: theme.textSecondary }]}>
+                  {themeMode === 'light' ? 'Cocok untuk siang hari' : 'Nyaman di mata saat malam'}
+                </Text>
+              </View>
+              <Switch
+                value={themeMode === 'dark'}
+                onValueChange={toggleTheme}
+                trackColor={{ false: '#E0E0E0', true: theme.primary }}
+                thumbColor={themeMode === 'dark' ? '#FFFFFF' : '#F5F5F5'}
+              />
+            </View>
+          </View>
+        </View>
+
         {/* App Info */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Ionicons name="information-circle" size={24} color="#4CAF50" />
-            <Text style={styles.sectionTitle}>Informasi Aplikasi</Text>
+            <Ionicons name="information-circle" size={24} color={theme.primary} />
+            <Text style={[styles.sectionTitle, { color: theme.text }]}>Informasi Aplikasi</Text>
           </View>
-          <View style={styles.infoCard}>
-            <Text style={styles.appName}>Finance Tracker</Text>
-            <Text style={styles.appVersion}>Versi 1.0.0</Text>
-            <Text style={styles.appDescription}>
+          <View style={[styles.infoCard, { backgroundColor: theme.surface }]}>
+            <Text style={[styles.appName, { color: theme.primary }]}>Finance Tracker</Text>
+            <Text style={[styles.appVersion, { color: theme.textSecondary }]}>Versi 1.0.0</Text>
+            <Text style={[styles.appDescription, { color: theme.textSecondary }]}>
               Aplikasi pencatat keuangan dengan analisis AI untuk membantu Anda mengelola keuangan lebih baik.
             </Text>
           </View>
