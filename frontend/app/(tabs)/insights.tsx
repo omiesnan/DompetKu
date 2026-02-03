@@ -20,7 +20,7 @@ export default function Insights() {
   const [refreshing, setRefreshing] = useState(false);
   const [dailyTip, setDailyTip] = useState('');
 
-  const BACKEND_URL = Constants.expoConfig?.extra?.EXPO_PUBLIC_BACKEND_URL || process.env.EXPO_PUBLIC_BACKEND_URL;
+  const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
   useFocusEffect(
     useCallback(() => {
