@@ -4,7 +4,7 @@
     "slug": "finance-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/app-image.png",
     "scheme": "frontend",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -12,11 +12,12 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSUserTrackingUsageDescription": "Lacak pengeluaran Anda dengan mudah"
-      }
+      },
+      "bundleIdentifier": "com.financetracker.app"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/app-image.png",
         "backgroundColor": "#4CAF50"
       },
       "edgeToEdgeEnabled": true,
@@ -39,7 +40,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash-image.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#4CAF50"
@@ -48,9 +49,8 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/images/notification-icon.png",
+          "icon": "./assets/images/app-image.png",
           "color": "#4CAF50",
-          "sounds": ["./assets/sounds/notification.wav"],
           "androidMode": "default",
           "androidCollapsedTitle": "Finance Tracker"
         }
