@@ -10,12 +10,16 @@ import {
   KeyboardAvoidingView,
   Alert,
   Switch,
+  ActivityIndicator,
 } from 'react-native';
 import { useState, useEffect, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { getCategories, saveCategory, Category } from '../../utils/storage';
+import { getCategories, saveCategory, Category, getTransactions, getBudgets } from '../../utils/storage';
 import { useThemeStore } from '../../utils/themeStore';
+import { exportToCSV, exportBackup, exportMonthlyReport } from '../../utils/exportUtils';
+import { restoreFromBackup, getAllDataForBackup } from '../../utils/backupUtils';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
 
 const AVAILABLE_ICONS = [
   'fast-food', 'car', 'cart', 'receipt', 'game-controller', 'medical',
